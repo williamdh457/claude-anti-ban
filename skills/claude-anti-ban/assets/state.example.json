@@ -1,0 +1,59 @@
+{
+  "_comment": "Agent 在 P0/P1 阶段填这个文件，P8 用它渲染用户手册。缺的字段会用默认值。",
+  "generated_at": "2026-11-17",
+  "platform": "Windows 11 专业版",
+  "mode": "vm",
+
+  "exit": {
+    "ip": "203.0.113.10",
+    "country": "美国",
+    "city": "纽约",
+    "timezone": "America/New_York",
+    "type": "机房线路",
+    "trust": 84
+  },
+
+  "node": {
+    "protocol": "vless-reality",
+    "client": "Clash Verge Rev",
+    "name": "us-node",
+    "port": 443
+  },
+
+  "local": {
+    "timezone_label": "纽约时间",
+    "tz_offset_note": "和北京时间差 13 小时",
+    "language": "英文优先（界面保留中文）",
+    "ipv6": "已关闭",
+    "leak": "已封堵"
+  },
+
+  "isolation": {
+    "type": "hyperv",
+    "name": "ClaudeBox",
+    "checkpoint": "clean-baseline",
+    "apps": ["浏览器", "VSCode", "Claude 桌面端"]
+  },
+
+  "cleanup": {
+    "performed": true,
+    "backup": "D:\\ClaudeBackups\\20261117-0045"
+  },
+
+  "verification": {
+    "exit_ips_match": true,
+    "dns_pass": true,
+    "webrtc_pass": true,
+    "tz_pass": true,
+    "lang_pass": true,
+    "latency_ms": 190
+  },
+
+  "payment": {
+    "route": "google-play",
+    "plan": "Pro",
+    "price": "$20/月"
+  },
+
+  "known_issues": []
+}
