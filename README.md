@@ -4,6 +4,7 @@
 > **最后只给你一份文档**，其余中间产物 AI 自己删掉。
 
 <p align="center">
+  <a href="https://github.com/williamdh457/claude-anti-ban"><img alt="repo" src="https://img.shields.io/badge/GitHub-claude--anti--ban-black.svg"></a>
   <img alt="license" src="https://img.shields.io/badge/license-MIT-blue.svg">
   <img alt="platform" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg">
   <img alt="mode" src="https://img.shields.io/badge/mode-autopilot-green.svg">
@@ -208,6 +209,9 @@ python3 skills/claude-anti-ban/scripts/render_user_guide.py \
 ## 装进你的 Agent
 
 ```bash
+git clone https://github.com/williamdh457/claude-anti-ban.git
+cd claude-anti-ban
+
 # Claude Code（项目级）
 mkdir -p .claude/skills && cp -r skills/claude-anti-ban .claude/skills/
 
