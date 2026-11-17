@@ -129,10 +129,12 @@ try {
 } catch { Say ("[XX] 设置区域失败: {0}" -f $_.Exception.Message) 'Red' }
 
 try {
-    $list = Get-WinUserLanguageList
-    $list.Insert(0, (New-WinUserLanguageList $Language)[0])
-    $list = $list | Select-Object -Unique -Property LanguageTag
-    Set-WinUserLanguageList -LanguageList $list -Force
+    $newList = New-WinUserLanguageList $Language
+    $primary = $newList[0].LanguageTag
+    foreach ($l in (Get-WinUserLanguageList)) {
+        if ($l.LanguageTag -ne $primary) { $newList.Add($l.LanguageTag) }
+    }
+    Set-WinUserLanguageList -LanguageList $newList -Force
     Say ("[OK] 首选语言 = {0}" -f ((Get-WinUserLanguageList | ForEach-Object LanguageTag) -join ', ')) 'Green'
 } catch { Say ("[XX] 设置语言失败: {0}" -f $_.Exception.Message) 'Red' }
 

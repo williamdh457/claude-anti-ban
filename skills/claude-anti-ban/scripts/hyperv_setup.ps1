@@ -180,7 +180,8 @@ if (-not $DryRun -and (Get-VM -Name $Name -ErrorAction SilentlyContinue)) {
     Write-Step '配置虚拟机'
     Set-VM -Name $Name -AutomaticCheckpointsEnabled $false
     Set-VM -Name $Name -MemoryStartupBytes ($MemoryGB * 1GB)
-    Set-VMProcessor -VMName $Name -Count ([math]::Max(2, [math]::Min(4, [Environment]::ProcessorCount / 2)))
+    $cpuCount = [int][math]::Max(2, [math]::Min(4, [math]::Floor([Environment]::ProcessorCount / 2)))
+    Set-VMProcessor -VMName $Name -Count $cpuCount
     Add-VMDvdDrive -VMName $Name -Path $IsoPath -ErrorAction SilentlyContinue
     $dvd = Get-VMDvdDrive -VMName $Name | Select-Object -First 1
     Set-VMFirmware -VMName $Name -FirstBootDevice $dvd -ErrorAction SilentlyContinue
