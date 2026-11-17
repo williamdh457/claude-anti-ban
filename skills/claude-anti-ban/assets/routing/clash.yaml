@@ -1,0 +1,41 @@
+# Claude 专用分流规则（Clash / Clash.Meta / Mihomo / Stash 通用）
+# 放置位置：rules: 段的最前面，优先级高于任何 geosite / GEOIP 通配规则
+# 出口组名按你自己的订阅改：PROXY
+
+rules:
+  # ===== 核心域名（最高优先级）=====
+  - DOMAIN-SUFFIX,anthropic.com,PROXY
+  - DOMAIN-SUFFIX,claude.ai,PROXY
+  - DOMAIN-SUFFIX,claude.com,PROXY
+  - DOMAIN-SUFFIX,clau.de,PROXY
+  - DOMAIN-SUFFIX,claudemcpclient.com,PROXY
+  - DOMAIN-SUFFIX,claudemcpcontent.com,PROXY
+  - DOMAIN-SUFFIX,claudeusercontent.com,PROXY
+
+  # ===== CDN =====
+  - DOMAIN,servd-anthropic-website.b-cdn.net,PROXY
+  - DOMAIN,anthropic.com.cdn.cloudflare.net,PROXY
+
+  # ===== 认证 / KYC =====
+  - DOMAIN,anthropic.auth0.com,PROXY
+  - DOMAIN,anthropic-com.ghost.io,PROXY
+  - DOMAIN-SUFFIX,withpersona.com,PROXY
+  - DOMAIN-SUFFIX,frompersona.com,PROXY
+  - DOMAIN-SUFFIX,maps.googleapis.com,PROXY
+
+  # ===== 监控 / 遥测（漏了就会「一半走代理一半直连」）=====
+  - DOMAIN-SUFFIX,sentry.io,PROXY
+  - DOMAIN-SUFFIX,statsigapi.net,PROXY
+  - DOMAIN,browser-intake-us5-datadoghq.com,PROXY
+  - DOMAIN-KEYWORD,datadog,PROXY
+  - DOMAIN-KEYWORD,sift,PROXY
+
+  # ===== 客服 / 统计 =====
+  - DOMAIN-SUFFIX,intercom.io,PROXY
+  - DOMAIN-SUFFIX,intercomcdn.com,PROXY
+  - DOMAIN,cdn.usefathom.com,PROXY
+
+  # ===== IP / ASN 兜底（域名规则漏掉时最后一道防线）=====
+  - IP-CIDR,160.79.104.0/21,PROXY,no-resolve
+  - IP-CIDR6,2607:6bc0::/32,PROXY,no-resolve
+  - IP-ASN,399358,PROXY,no-resolve

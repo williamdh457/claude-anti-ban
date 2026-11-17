@@ -1,0 +1,41 @@
+# Claude / Anthropic 完整分流域名清单
+# 用法：逐行喂给分流引擎（按子域名通配匹配）
+# 更新时间：2026-11
+
+# ---------- 核心（缺一不可）----------
+anthropic.com
+claude.ai
+claude.com
+clau.de
+claudemcpclient.com
+claudemcpcontent.com
+claudeusercontent.com
+
+# ---------- CDN / 静态资源 ----------
+cdn.anthropic.com
+anthropic.com.cdn.cloudflare.net
+servd-anthropic-website.b-cdn.net
+claude.ai.cdn.cloudflare.net
+
+# ---------- 认证 / 内容 ----------
+anthropic.auth0.com
+anthropic-com.ghost.io
+console.anthropic.com
+workbench.anthropic.com
+mcp.anthropic.com
+support.claude.com
+
+# ---------- KYC（遇到证件核验必加）----------
+withpersona.com
+frompersona.com
+maps.googleapis.com
+
+# ---------- 监控 / 遥测（不代理 = 出口不一致）----------
+sentry.io
+statsigapi.net
+browser-intake-us5-datadoghq.com
+
+# ---------- 客服 / 统计 widget ----------
+intercom.io
+intercomcdn.com
+cdn.usefathom.com
